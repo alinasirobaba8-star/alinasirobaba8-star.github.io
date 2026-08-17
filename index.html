@@ -1,890 +1,142 @@
-Replace your full index.html with this:
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alina’s Arches & Balloons</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alina’s Party Studio creates balloon décor, custom party details, T-shirts, snack bags, labels and invitations in Montreal.">
+  <title>Alina’s Party Studio | Montreal Event Décor &amp; Custom Party Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(180deg, #fff8fc 0%, #f8ecf7 100%);
-      color: #333;
-    }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 40px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: #4b2e39;
-      white-space: nowrap;
-    }
-    .nav {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .nav a {
-      text-decoration: none;
-      color: #4b2e39;
-      font-weight: 600;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-    .nav a:hover { color: #c06c84; }
-    .hero {
-      min-height: 82vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(120deg, #fff8fc, #f7e8f3, #ffffff);
-    }
-    .hero-content {
-      max-width: 850px;
-    }
-    .small-title {
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #b47b8f;
-      margin-bottom: 10px;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 54px;
-      line-height: 1.1;
-      margin: 0 0 20px;
-      color: #3a2430;
-      text-shadow: 0 10px 30px rgba(192, 108, 132, 0.22);
-    }
-    .hero-description {
-      font-size: 18px;
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-    .book-btn,
-    .contact-button,
-    .package-btn,
-    .first-order-btn {
-      position: relative;
-      overflow: hidden;
-    }
-    .book-btn,
-    .contact-button {
-      display: inline-block;
-      background: #c06c84;
-      color: white;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 999px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
-      transition: 0.3s ease;
-    }
-    .book-btn:hover,
-    .contact-button:hover {
-      background: #a95770;
-      transform: translateY(-2px);
-    }
-    .book-btn::after,
-    .package-btn::after,
-    .contact-button::after,
-    .first-order-btn::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 120%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-      transition: 0.55s ease;
-    }
-    .book-btn:hover::after,
-    .package-btn:hover::after,
-    .contact-button:hover::after,
-    .first-order-btn:hover::after {
-      left: 100%;
-    }
-    .first-order-banner {
-      margin: 28px auto 0;
-      padding: 20px 24px;
-      max-width: 620px;
-      background: linear-gradient(135deg, #ffe3e3, #fff1f1);
-      border: 1.5px solid #d94b4b;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 14px 35px rgba(180, 40, 40, 0.14);
-    }
-    .first-order-text {
-      margin: 0 0 12px;
-      font-weight: 600;
-      color: #9f1f1f;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-    .first-order-btn {
-      background: #c62828;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      padding: 11px 24px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    .first-order-btn:hover { background: #9f1f1f; }
-    .packages {
-      padding: 90px 20px;
-      background: linear-gradient(180deg, #fff8fc 0%, #ffffff 100%);
-      text-align: center;
-    }
-    .packages h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 46px;
-      color: #6f4561;
-      margin: 0 0 10px;
-    }
-    .packages-subtitle {
-      color: #6a4a5d;
-      font-size: 17px;
-      margin-bottom: 45px;
-    }
-    .packages-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-    }
-    .package-card {
-      background: rgba(255,255,255,0.95);
-      border-radius: 26px;
-      padding: 18px 18px 30px;
-      box-shadow: 0 18px 45px rgba(91, 55, 76, 0.13);
-      text-align: left;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-      border: 1px solid #f0dce8;
-    }
-    .package-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 30px 70px rgba(91, 55, 76, 0.25);
-    }
-    .featured-package {
-      border: 2px solid #c06c84;
-      transform: scale(1.03);
-    }
-    .featured-package:hover {
-      transform: translateY(-10px) scale(1.04);
-    }
-    .package-card img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 20px;
-      margin-bottom: 22px;
-    }
-    .package-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      color: #4b2e39;
-      margin: 0 0 8px;
-    }
-    .package-price {
-      font-size: 24px;
-      font-weight: 700;
-      color: #c06c84;
-      margin: 0 0 8px;
-    }
-    .package-note {
-      color: #6a4a5d;
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-    .package-card ul {
-      padding-left: 20px;
-      margin-bottom: 18px;
-      color: #4e3a45;
-      line-height: 1.7;
-      font-size: 15px;
-    }
-    .package-warning {
-      font-size: 12px;
-      color: #a95770;
-      background: #fff1f6;
-      padding: 10px 12px;
-      border-radius: 12px;
-      line-height: 1.5;
-    }
-    .package-btn {
-      width: 100%;
-      background: #c06c84;
-      color: white;
-      border: none;
-      border-radius: 999px;
-      padding: 13px 22px;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 14px;
-      font-size: 15px;
-    }
-    .package-btn:hover { background: #a95770; }
-    .featured-label {
-      display: inline-block;
-      background: #c06c84;
-      color: white;
-      font-size: 12px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .modal-content {
-      background: #fff;
-      width: 100%;
-      max-width: 1000px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 22px;
-      padding: 30px;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-    }
-    .gallery-modal-content {
-      max-width: 1350px;
-      padding: 28px;
-    }
-    .modal-content h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      margin-top: 0;
-      color: #3a2430;
-    }
-    .modal-content h3 {
-      color: #4b2e39;
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-    }
-    .modal-content p {
-      line-height: 1.7;
-      margin-top: 0;
-    }
-    .close {
-      position: absolute;
-      right: 18px;
-      top: 14px;
-      font-size: 30px;
-      cursor: pointer;
-      color: #666;
-      z-index: 5;
-    }
-    .pricing-fullscreen {
-      align-items: flex-start;
-      padding: 0;
-    }
-    .pricing-content {
-      width: 100%;
-      max-width: none;
-      min-height: 100vh;
-      border-radius: 0;
-      padding: 36px 28px 90px;
-      overflow-y: auto;
-      background: linear-gradient(180deg, #fff8fc 0%, #ffffff 100%);
-    }
-    .pricing-header {
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      padding: 10px 0 18px;
-      margin-bottom: 10px;
-      z-index: 10;
-    }
-    .back-btn {
-      background: none;
-      border: none;
-      font-size: 18px;
-      font-weight: 600;
-      color: #c06c84;
-      cursor: pointer;
-      padding: 8px 0;
-    }
-    .back-btn:hover {
-      color: #a95770;
-    }
-    .pricing-list {
-      max-width: 980px;
-      margin: 30px auto 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-    .pricing-item {
-      background: rgba(255,255,255,0.95);
-      border: 1px solid #f0dce8;
-      border-radius: 18px;
-      padding: 16px 18px;
-      box-shadow: 0 12px 30px rgba(91,55,76,0.08);
-      text-align: left;
-      transition: 0.3s ease;
-    }
-    .pricing-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(91,55,76,0.12);
-    }
-    .pricing-item p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.55;
-      color: #4e3a45;
-    }
-    .pricing-note {
-      max-width: 900px;
-      margin: 34px auto 0;
-      text-align: center;
-      color: #6a4a5d;
-      line-height: 1.7;
-    }
-    .all-gallery {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-      margin-top: 32px;
-    }
-    .all-gallery img {
-      width: 100%;
-      height: 165px;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-      background: #f8ecf7;
-      cursor: zoom-in;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .all-gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.88);
-      justify-content: center;
-      align-items: center;
-      z-index: 99999;
-      padding: 20px;
-      cursor: zoom-out;
-    }
-    .lightbox.active { display: flex; }
-    .lightbox img {
-      max-width: 92%;
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 24px;
-      right: 32px;
-      color: white;
-      font-size: 38px;
-      cursor: pointer;
-      z-index: 100000;
-    }
-    .lightbox-arrow {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.18);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.35);
-      font-size: 42px;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      cursor: pointer;
-      z-index: 100000;
-      backdrop-filter: blur(10px);
-    }
-    .lightbox-prev { left: 28px; }
-    .lightbox-next { right: 28px; }
-    .lightbox-arrow:hover {
-      background: rgba(255,255,255,0.32);
-    }
-    .contact-link {
-      color: #a95770;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .contact-link:hover { text-decoration: underline; }
-    .booking-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 20px;
-    }
-    .booking-form input,
-    .booking-form select,
-    .booking-form textarea {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1px solid #e5d6de;
-      border-radius: 14px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
-      background: #fff;
-      color: #4b3140;
-    }
-    .booking-form input:focus,
-    .booking-form select:focus,
-    .booking-form textarea:focus {
-      outline: none;
-      border-color: #c06c84;
-      box-shadow: 0 0 0 3px rgba(192,108,132,0.12);
-    }
-    .booking-form textarea { resize: vertical; }
-    .sticky-contact-bar {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      z-index: 9998;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(18px);
-      border: 1px solid #ead7e4;
-      border-radius: 999px;
-      padding: 10px 14px;
-      display: flex;
-      gap: 8px;
-      box-shadow: 0 25px 60px rgba(91,55,76,0.25);
-    }
-    .sticky-contact-bar a {
-      text-decoration: none;
-      color: #6f4561;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      transition: 0.3s ease;
-    }
-    .sticky-contact-bar a:hover {
-      background: linear-gradient(135deg, #c06c84, #e8a0c0);
-      color: white;
-    }
-    @media (max-width: 900px) {
-      .topbar {
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px 20px;
-      }
-      .logo {
-        font-size: 24px;
-        text-align: center;
-        white-space: normal;
-      }
-      .nav { gap: 14px; }
-      .nav a { font-size: 14px; }
-      .hero h1 { font-size: 38px; }
-      .hero-description { font-size: 16px; }
-      .packages-grid { grid-template-columns: 1fr; }
-      .featured-package,
-      .featured-package:hover {
-        transform: none;
-      }
-      .modal-content { padding: 24px; }
-      .pricing-content {
-        padding: 28px 20px 90px;
-      }
-      .pricing-list {
-        grid-template-columns: 1fr;
-      }
-      .all-gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .all-gallery img { height: 160px; }
-    }
-    @media (max-width: 480px) {
-      .all-gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .all-gallery img { height: 150px; }
-      .lightbox img {
-        max-width: 96%;
-        max-height: 82vh;
-      }
-      .lightbox-close {
-        top: 18px;
-        right: 22px;
-        font-size: 34px;
-      }
-      .lightbox-arrow {
-        font-size: 30px;
-        width: 44px;
-        height: 44px;
-      }
-      .lightbox-prev { left: 12px; }
-      .lightbox-next { right: 12px; }
-      .sticky-contact-bar {
-        width: calc(100% - 24px);
-        justify-content: space-between;
-        bottom: 12px;
-        padding: 8px;
-      }
-      .sticky-contact-bar a {
-        font-size: 13px;
-        padding: 10px 12px;
-      }
-    }
+    :root{--ink:#39252f;--muted:#755d69;--rose:#b85f7c;--rose-dark:#92445f;--blush:#f8eaf1;--cream:#fffafc;--line:#ead8e1;--white:#fff;--shadow:0 18px 50px rgba(83,43,62,.12)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;scroll-padding-top:88px} body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;line-height:1.6} img{display:block;max-width:100%} a{color:inherit} button,input,select,textarea{font:inherit}
+    .container{width:min(1180px,calc(100% - 40px));margin:auto}.eyebrow{margin:0 0 10px;color:var(--rose);font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}.section-head{max-width:690px;margin:0 auto 42px;text-align:center}.section-head h2{margin:0 0 12px;font:700 clamp(2.2rem,5vw,3.6rem)/1.1 'Playfair Display',serif}.section-head p{margin:0;color:var(--muted);font-size:1.05rem}
+    .site-header{position:sticky;top:0;z-index:50;background:rgba(255,250,252,.92);border-bottom:1px solid rgba(234,216,225,.85);backdrop-filter:blur(14px)}.header-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:30px}.brand{text-decoration:none;font:700 1.55rem/1 'Playfair Display',serif}.brand span{color:var(--rose)}.nav{display:flex;align-items:center;gap:24px}.nav a{text-decoration:none;font-size:.94rem;font-weight:600}.nav a:hover{color:var(--rose)}.nav .nav-cta{padding:10px 18px;border-radius:999px;background:var(--ink);color:#fff}.menu-toggle{display:none;border:0;background:transparent;color:var(--ink);font-size:1.5rem;cursor:pointer}
+    .hero{position:relative;overflow:hidden;padding:108px 0 90px;background:radial-gradient(circle at 84% 20%,#efd1df 0,transparent 32%),linear-gradient(135deg,#fff 0,#fff5fa 55%,#f8e7f0 100%)}.hero:after{content:"";position:absolute;right:-75px;bottom:-110px;width:320px;height:320px;border:48px solid rgba(184,95,124,.08);border-radius:50%}.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:70px}.hero h1{max-width:760px;margin:0 0 22px;font:700 clamp(3rem,6.3vw,5.9rem)/.98 'Playfair Display',serif;letter-spacing:-.035em}.hero h1 em{color:var(--rose);font-style:normal}.hero-copy{max-width:650px;margin:0 0 30px;color:var(--muted);font-size:1.13rem}.button-row{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 24px;border:1px solid var(--rose);border-radius:999px;background:var(--rose);color:#fff;text-decoration:none;font-weight:700;cursor:pointer;transition:.2s}.btn:hover{background:var(--rose-dark);border-color:var(--rose-dark);transform:translateY(-2px)}.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}.btn.secondary:hover{background:#fff;border-color:var(--rose)}.hero-card{position:relative;padding:22px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9);border-radius:36px;box-shadow:var(--shadow);transform:rotate(2deg)}.hero-card img{width:100%;height:470px;object-fit:cover;border-radius:24px}.hero-badge{position:absolute;left:-28px;bottom:38px;max-width:210px;padding:16px 18px;background:#fff;border-radius:18px;box-shadow:var(--shadow);font-weight:700}.hero-badge span{display:block;color:var(--rose);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
+    .trust-strip{padding:22px 0;background:var(--ink);color:#fff}.trust-items{display:flex;justify-content:center;flex-wrap:wrap;gap:18px 48px;font-size:.92rem;font-weight:600}.trust-items span:before{content:"✦";margin-right:10px;color:#efb8cd}
+    section{padding:92px 0}.services{background:#fff}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.service-card{padding:30px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#fff,#fff9fc);transition:.25s}.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:#dfb8c9}.service-icon{width:52px;height:52px;display:grid;place-items:center;margin-bottom:22px;border-radius:16px;background:var(--blush);font-size:1.5rem}.service-card h3{margin:0 0 10px;font:700 1.5rem 'Playfair Display',serif}.service-card p{margin:0;color:var(--muted)}
+    .packages{background:linear-gradient(180deg,var(--cream),#f8edf3)}.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.package{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:0 12px 34px rgba(83,43,62,.08)}.package.featured{border:2px solid var(--rose);transform:translateY(-10px)}.package img{width:100%;height:245px;object-fit:cover}.package-body{padding:26px}.package-label{display:inline-block;margin-bottom:12px;padding:6px 11px;border-radius:999px;background:var(--blush);color:var(--rose-dark);font-size:.73rem;font-weight:700;text-transform:uppercase}.package h3{margin:0 0 5px;font:700 1.75rem 'Playfair Display',serif}.price{margin:0 0 13px;color:var(--rose);font-size:1.25rem;font-weight:700}.package ul{padding-left:20px;color:var(--muted)}.text-link{color:var(--rose-dark);font-weight:700;text-underline-offset:4px}
+    .gallery{background:#fff}.filter-row{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:-12px 0 34px}.filter{padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font-weight:700;cursor:pointer}.filter.active,.filter:hover{background:var(--ink);border-color:var(--ink);color:#fff}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}.gallery-item{position:relative;overflow:hidden;border:0;border-radius:18px;background:var(--blush);cursor:pointer;padding:0}.gallery-item:nth-child(1),.gallery-item:nth-child(6){grid-row:span 2}.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.gallery-item:hover img{transform:scale(1.05)}.gallery-item:after{content:attr(aria-label);position:absolute;inset:auto 0 0;padding:35px 16px 14px;background:linear-gradient(transparent,rgba(36,19,28,.74));color:#fff;text-align:left;font-weight:700}.gallery-empty{display:none;padding:55px 20px;border:1px dashed #d9b6c6;border-radius:22px;background:var(--cream);text-align:center;color:var(--muted)}
+    .about{background:var(--ink);color:#fff}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}.about-collage{display:grid;grid-template-columns:1fr 1fr;gap:14px}.about-collage img{width:100%;height:360px;object-fit:cover;border-radius:22px}.about-collage img:last-child{margin-top:42px}.about h2{margin:0 0 20px;font:700 clamp(2.3rem,4.8vw,4rem)/1.08 'Playfair Display',serif}.about p{color:#eadde4}.about-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}.about-point{padding:15px;border:1px solid rgba(255,255,255,.14);border-radius:15px}.about-point strong{display:block;color:#f4bbd0}
+    .booking{background:linear-gradient(135deg,#fff 0,#f8e7ef 100%)}.booking-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:55px;padding:50px;border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.82);box-shadow:var(--shadow)}.booking h2{margin:0 0 15px;font:700 clamp(2.3rem,4.5vw,3.7rem)/1.08 'Playfair Display',serif}.contact-list{display:grid;gap:15px;margin-top:28px}.contact-list a{text-decoration:none;color:var(--rose-dark);font-weight:700}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.84rem;font-weight:700}.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid #dcc8d2;border-radius:12px;background:#fff;color:var(--ink)}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid rgba(184,95,124,.28);border-color:var(--rose)}
+    footer{padding:34px 0;background:#2f1d26;color:#e8dce2}.footer-inner{display:flex;justify-content:space-between;gap:25px;align-items:center}.footer-links{display:flex;gap:20px;flex-wrap:wrap}.footer-links a{text-decoration:none}.footer-links a:hover{color:#f1abc5}
+    .lightbox{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:30px;background:rgba(25,13,19,.92)}.lightbox.open{display:grid}.lightbox img{max-width:min(1100px,92vw);max-height:86vh;border-radius:18px}.lightbox button{position:absolute;top:20px;right:25px;border:0;background:transparent;color:#fff;font-size:2.5rem;cursor:pointer}
+    @media(max-width:920px){.nav{display:none;position:absolute;top:78px;left:0;right:0;padding:22px;background:#fff;border-bottom:1px solid var(--line);flex-direction:column}.nav.open{display:flex}.menu-toggle{display:block}.hero-grid,.about-grid,.booking-wrap{grid-template-columns:1fr}.hero{padding-top:70px}.hero-card{max-width:620px;transform:none}.service-grid{grid-template-columns:repeat(2,1fr)}.package-grid{grid-template-columns:1fr}.package.featured{transform:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.booking-wrap{padding:34px}}
+    @media(max-width:600px){.container{width:min(100% - 28px,1180px)}section{padding:70px 0}.brand{font-size:1.3rem}.hero h1{font-size:3.1rem}.hero-card img{height:370px}.hero-badge{left:10px}.service-grid,.form-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}.gallery-item:nth-child(1),.gallery-item:nth-child(6){grid-row:span 1}.about-collage img{height:250px}.about-points{grid-template-columns:1fr}.booking-wrap{padding:26px 20px}.footer-inner{align-items:flex-start;flex-direction:column}}
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo">Alina’s Arches & Balloons</div>
-    <nav class="nav">
-      <a href="#" onclick="openModal('aboutModal'); return false;">About</a>
-      <a href="#" onclick="openModal('servicesModal'); return false;">Services</a>
-      <a href="#" onclick="openModal('pricingModal'); return false;">Pricing</a>
-      <a href="#" onclick="openModal('galleryModal'); return false;">Gallery</a>
-      <a href="#" onclick="openModal('bookingModal'); return false;">Booking</a>
-      <a href="#" onclick="openModal('contactModal'); return false;">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Alina’s Party Studio home">Alina’s <span>Party Studio</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#packages">Balloon Packages</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#booking" class="nav-cta">Book your event</a>
+      </nav>
+    </div>
   </header>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <p class="small-title">Montreal Balloon & Custom Event Decor</p>
-      <h1>Elegant Balloon Designs & Customized Details for Every Celebration</h1>
-      <p class="hero-description">
-        Luxury balloon arches, garlands, floral decor, customized cups, t-shirts, stickers, name details,
-        and custom installations for birthdays, baby showers, weddings, corporate events, and special celebrations.
-      </p>
-      <a href="#" class="book-btn" onclick="openModal('bookingModal'); return false;">Book Your Decor</a>
-      <div class="first-order-banner">
-        <p class="first-order-text">
-          ✨ First Order Discount — Enjoy 10% OFF your first booking from $450+
-        </p>
-        <button onclick="openModal('bookingModal')" class="first-order-btn">
-          Claim Your Discount
-        </button>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Montreal event décor &amp; personalized party goods</p>
+          <h1>Your whole celebration, <em>beautifully made.</em></h1>
+          <p class="hero-copy">From statement balloon décor to custom T-shirts, snack bags, stickers and invitations, Alina’s Party Studio brings every detail together around your theme.</p>
+          <div class="button-row"><a class="btn" href="#booking">Start your party</a><a class="btn secondary" href="#services">Explore services</a></div>
+        </div>
+        <div class="hero-card">
+          <img src="images/picture8.jpg" alt="Elegant custom balloon décor by Alina’s Party Studio">
+          <div class="hero-badge"><span>First booking</span>10% off orders of $450+</div>
+        </div>
       </div>
-    </div>
-  </section>
-  <section class="packages">
-    <h2>Packages</h2>
-    <p class="packages-subtitle">Choose a package based on your event style and budget.</p>
-    <div class="packages-grid">
-      <div class="package-card">
-        <img src="images/picture17.jpg" alt="Starter balloon package">
-        <h3>Starter Package</h3>
-        <p class="package-price">From $250</p>
-        <p class="package-note">Budget-friendly option for smaller celebrations.</p>
-        <ul>
-          <li>Small balloon garland or simple column setup</li>
-          <li>2–3 balloon colors</li>
-          <li>Basic design</li>
-          <li>Best for home birthdays or small parties</li>
-        </ul>
-        <p class="package-warning">Budget-friendly balloons may be used for this package, so the finish and durability may be less premium.</p>
-        <button onclick="openModal('bookingModal')" class="package-btn">Book this package</button>
+    </section>
+
+    <div class="trust-strip"><div class="container trust-items"><span>Custom-designed in Montreal</span><span>Décor + personalized details</span><span>Made for your theme</span></div></div>
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Everything for the party</p><h2>One studio, every special detail</h2><p>Choose one service or let us create a coordinated look across your celebration.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><div class="service-icon">◯</div><h3>Balloon Décor</h3><p>Arches, garlands, columns, walls, centerpieces, grab-and-go pieces and full custom installations.</p></article>
+          <article class="service-card"><div class="service-icon">✦</div><h3>Custom T-Shirts</h3><p>Personalized shirts for birthdays, family groups, milestone moments, teams and special events.</p></article>
+          <article class="service-card"><div class="service-icon">▧</div><h3>Snack &amp; Chip Bags</h3><p>Custom wrappers and party snack bags designed to match your colors, characters and theme.</p></article>
+          <article class="service-card"><div class="service-icon">●</div><h3>Stickers &amp; Party Labels</h3><p>Personalized stickers, bottle labels, favour labels, name details and coordinated finishing touches.</p></article>
+          <article class="service-card"><div class="service-icon">✉</div><h3>Invitations</h3><p>Custom digital or printed invitations that introduce your celebration in a polished, personal way.</p></article>
+          <article class="service-card"><div class="service-icon">♡</div><h3>Full Party Décor</h3><p>Backdrops, florals, table details, centrepieces and themed décor brought together into one look.</p></article>
+        </div>
       </div>
-      <div class="package-card featured-package">
-        <span class="featured-label">Most Popular</span>
-        <img src="images/picture20.jpg" alt="Signature balloon package">
-        <h3>Signature Package</h3>
-        <p class="package-price">From $450</p>
-        <p class="package-note">Perfect for birthdays, baby showers, and photo areas.</p>
-        <ul>
-          <li>Deluxe balloon garland or half arch</li>
-          <li>Premium balloon colors</li>
-          <li>Custom color palette</li>
-          <li>Setup included</li>
-          <li>Optional name sign or small custom detail</li>
-        </ul>
-        <button onclick="openModal('bookingModal')" class="package-btn">Book this package</button>
+    </section>
+
+    <section class="packages" id="packages">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Balloon décor remains at our heart</p><h2>Signature balloon packages</h2><p>Starting points for celebrations of every size. Final quotes reflect your theme, venue and setup.</p></div>
+        <div class="package-grid">
+          <article class="package"><img src="images/picture17.jpg" alt="Starter balloon garland"><div class="package-body"><span class="package-label">Intimate celebrations</span><h3>Starter</h3><p class="price">From $250</p><ul><li>Small garland or column setup</li><li>Two to three balloon colours</li><li>Ideal for home birthdays and smaller parties</li></ul><a class="text-link" href="#booking">Ask about Starter →</a></div></article>
+          <article class="package featured"><img src="images/picture20.jpg" alt="Signature balloon installation"><div class="package-body"><span class="package-label">Most popular</span><h3>Signature</h3><p class="price">From $450</p><ul><li>Deluxe garland or half arch</li><li>Premium custom colour palette</li><li>Setup included</li><li>Optional name sign or personalized detail</li></ul><a class="text-link" href="#booking">Ask about Signature →</a></div></article>
+          <article class="package"><img src="images/arch6.jpg" alt="Luxury balloon arch and backdrop"><div class="package-body"><span class="package-label">Statement events</span><h3>Luxury</h3><p class="price">From $750</p><ul><li>Large arch or full installation</li><li>Florals, greenery or backdrop details</li><li>Delivery and complete setup included</li></ul><a class="text-link" href="#booking">Ask about Luxury →</a></div></article>
+        </div>
       </div>
-      <div class="package-card">
-        <img src="images/arch6.jpg" alt="Luxury balloon package">
-        <h3>Luxury Package</h3>
-        <p class="package-price">From $750</p>
-        <p class="package-note">Full custom setup for a premium event look.</p>
-        <ul>
-          <li>Large balloon arch or full installation</li>
-          <li>High-quality professional balloons</li>
-          <li>Floral or greenery details</li>
-          <li>Backdrop or focal-point setup</li>
-          <li>Delivery and full setup included</li>
-        </ul>
-        <button onclick="openModal('bookingModal')" class="package-btn">Book this package</button>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head"><p class="eyebrow">Our work</p><h2>A growing gallery of celebrations</h2><p>Use the categories to explore. New custom-product photos will be added as they arrive.</p></div>
+        <div class="filter-row" aria-label="Gallery filters">
+          <button class="filter active" data-filter="all">All work</button><button class="filter" data-filter="balloons">Balloon décor</button><button class="filter" data-filter="tshirts">T-shirts</button><button class="filter" data-filter="snacks">Snack bags</button><button class="filter" data-filter="labels">Labels</button><button class="filter" data-filter="invitations">Invitations</button><button class="filter" data-filter="decor">Party décor</button>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-item" data-category="balloons" aria-label="Pink statement balloon arch"><img src="images/picture23.jpg" alt="Pink statement balloon arch" loading="lazy"></button>
+          <button class="gallery-item" data-category="balloons" aria-label="Pastel balloon celebration"><img src="images/picture2.jpg" alt="Pastel balloon celebration" loading="lazy"></button>
+          <button class="gallery-item" data-category="decor" aria-label="Styled party backdrop"><img src="images/picture9.jpg" alt="Styled party backdrop" loading="lazy"></button>
+          <button class="gallery-item" data-category="balloons" aria-label="Custom balloon garland"><img src="images/picture14.jpg" alt="Custom balloon garland" loading="lazy"></button>
+          <button class="gallery-item" data-category="decor" aria-label="Elegant celebration details"><img src="images/picture19.jpg" alt="Elegant celebration details" loading="lazy"></button>
+          <button class="gallery-item" data-category="balloons" aria-label="Luxury balloon installation"><img src="images/arch5.jpg" alt="Luxury balloon installation" loading="lazy"></button>
+          <button class="gallery-item" data-category="balloons" aria-label="Custom colour balloon arch"><img src="images/arch7.jpg" alt="Custom colour balloon arch" loading="lazy"></button>
+          <button class="gallery-item" data-category="decor" aria-label="Party focal point styling"><img src="images/picture22.jpg" alt="Party focal point styling" loading="lazy"></button>
+        </div>
+        <div class="gallery-empty"><strong>Photos for this collection are coming next.</strong><br>We are preparing this space for Alina’s newest custom work.</div>
       </div>
-    </div>
-  </section>
-  <div id="aboutModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('aboutModal')">&times;</span>
-      <h2>About Me</h2>
-      <p>Hi, I’m Alina — the creator behind <strong>Alina’s Arches & Balloons</strong>, a luxury décor service based in <strong>Montreal</strong>.</p>
-      <p>I create balloon decor, floral event pieces, and customized details that make celebrations feel more personal, elegant, and memorable.</p>
-      <p>Every setup is designed with care, creativity, and attention to detail to bring each client’s vision to life.</p>
-    </div>
-  </div>
-  <div id="servicesModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('servicesModal')">&times;</span>
-      <h2>Services</h2>
-      <h3>Balloon Decor</h3>
-      <p>Balloon arches, garlands, columns, walls, centerpieces, grab & go garlands, and custom installations.</p>
-      <h3>Floral Decor</h3>
-      <p>Elegant floral arches, entrance stands, ceremony decor, and photo-area styling.</p>
-      <h3>Customized Details</h3>
-      <p>Custom cups, t-shirts, stickers, keychains, name tags, personalized gifts, party details, and event accessories.</p>
-      <h3>Custom Installations</h3>
-      <p>Personalized decor created to match your theme, colors, and event style.</p>
-    </div>
-  </div>
-  <div id="pricingModal" class="modal pricing-fullscreen">
-    <div class="modal-content pricing-content">
-      <div class="pricing-header">
-        <button class="back-btn" onclick="closeModal('pricingModal')">&#8592; Back</button>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-collage"><img src="images/picture4.jpg" alt="Balloon décor details" loading="lazy"><img src="images/arch9.jpg" alt="Custom event arch" loading="lazy"></div>
+        <div><p class="eyebrow">Meet the maker</p><h2>Personal touches make a party unforgettable.</h2><p>Hi, I’m Alina, the creator behind Alina’s Party Studio. What began with balloon décor has grown into a full creative studio for celebrations—bringing décor, personalized products and thoughtful details together in one place.</p><p>Every order is created with care around your colours, theme and occasion, whether you need one custom item or a full event look.</p><div class="about-points"><div class="about-point"><strong>Designed for you</strong>No copy-and-paste celebrations.</div><div class="about-point"><strong>Made with care</strong>Thoughtful details from start to finish.</div></div></div>
       </div>
-      <h2>Pricing</h2>
-      <div class="pricing-list">
-        <div class="pricing-item"><p><strong>Grab & Go Garland:</strong><br>starting at $150 CAD + tax</p></div>
-        <div class="pricing-item"><p><strong>Deluxe Garland:</strong><br>$40 CAD/ft</p></div>
-        <div class="pricing-item"><p><strong>Balloon Arches:</strong><br>starting at $200 CAD</p></div>
-        <div class="pricing-item"><p><strong>Balloon Columns:</strong><br>starting at $150 CAD</p></div>
-        <div class="pricing-item"><p><strong>Balloon Walls:</strong><br>starting at $400 CAD</p></div>
-        <div class="pricing-item"><p><strong>Centerpieces:</strong><br>starting at $75 CAD per piece</p></div>
-        <div class="pricing-item"><p><strong>Floral Arches:</strong><br>starting at $400 CAD</p></div>
-        <div class="pricing-item"><p><strong>Entrance Stand Decor:</strong><br>starting at $150 CAD</p></div>
-        <div class="pricing-item"><p><strong>Customized T-Shirts:</strong><br>starting at $30 CAD each</p></div>
-        <div class="pricing-item"><p><strong>Customized Cups:</strong><br>starting at $25 CAD each</p></div>
-        <div class="pricing-item"><p><strong>Customized Stickers:</strong><br>starting at $15 CAD per small set</p></div>
-        <div class="pricing-item"><p><strong>Customized Keychains:</strong><br>starting at $18 CAD each</p></div>
-        <div class="pricing-item"><p><strong>Personalized Party Details:</strong><br>contact for pricing</p></div>
-        <div class="pricing-item"><p><strong>Custom Installations:</strong><br>contact for quote</p></div>
+    </section>
+
+    <section class="booking" id="booking">
+      <div class="container booking-wrap">
+        <div><p class="eyebrow">Let’s celebrate</p><h2>Tell us what you’re planning.</h2><p>Share your event date, theme and the services you are interested in. We’ll follow up with availability and a personalized quote.</p><div class="contact-list"><a href="tel:+14389282152">Call or text: +1 (438) 928-2152</a><a href="mailto:alinasirobaba8@gmail.com">alinasirobaba8@gmail.com</a><a href="https://www.instagram.com/alinas_party_arches_balloons_/" target="_blank" rel="noopener">Instagram: @alinas_party_arches_balloons_</a><a href="https://maps.app.goo.gl/CghPowcKYj4NRH8b8" target="_blank" rel="noopener">Montreal, Québec · View map</a></div></div>
+        <form action="https://formsubmit.co/alinasirobaba8@gmail.com" method="POST">
+          <div class="form-grid">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" required></div><div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required></div><div class="field"><label for="date">Event date</label><input id="date" name="event_date" type="date" required></div>
+            <div class="field full"><label for="service">What can we create?</label><select id="service" name="service" required><option value="">Choose a service</option><option>Balloon décor</option><option>Custom T-shirts</option><option>Snack / chip bags</option><option>Stickers / party labels</option><option>Invitations</option><option>Full party décor</option><option>Multiple services</option><option>Other</option></select></div>
+            <div class="field full"><label for="details">Theme, colours and details</label><textarea id="details" name="details" placeholder="Tell us about the occasion, quantity, venue and ideas you have in mind." required></textarea></div>
+            <input type="hidden" name="_subject" value="New Alina’s Party Studio inquiry"><input type="hidden" name="_captcha" value="false">
+            <div class="field full"><button class="btn" type="submit">Send booking request</button></div>
+          </div>
+        </form>
       </div>
-      <p class="pricing-note">
-        Final pricing may vary depending on size, design, quantity, materials, location, delivery, setup time, customization, and last-minute requests.
-      </p>
-    </div>
-  </div>
-  <div id="galleryModal" class="modal">
-    <div class="modal-content gallery-modal-content">
-      <span class="close" onclick="closeModal('galleryModal')">&times;</span>
-      <div class="all-gallery">
-        <img src="images/picture8.jpg" alt="">
-        <img src="images/picture23.jpg" alt="">
-        <img src="images/picture2.jpg" alt="">
-        <img src="images/picture3.jpg" alt="">
-        <img src="images/picture4.jpg" alt="">
-        <img src="images/picture5.jpg" alt="">
-        <img src="images/picture6.jpg" alt="">
-        <img src="images/picture7.jpg" alt="">
-        <img src="images/picture9.jpg" alt="">
-        <img src="images/picture10.jpg" alt="">
-        <img src="images/picture24.jpg" alt="">
-        <img src="images/picture11.jpg" alt="">
-        <img src="images/picture12.jpg" alt="">
-        <img src="images/picture13.jpg" alt="">
-        <img src="images/picture14.jpg" alt="">
-        <img src="images/picture15.jpg" alt="">
-        <img src="images/picture19.jpg" alt="">
-        <img src="images/picture21.jpg" alt="">
-        <img src="images/picture17.jpg" alt="">
-        <img src="images/picture18.jpg" alt="">
-        <img src="images/picture20.jpg" alt="">
-        <img src="images/picture22.jpg" alt="">
-        <img src="images/arch3.jpg" alt="">
-        <img src="images/arch4.jpg" alt="">
-        <img src="images/arch5.jpg" alt="">
-        <img src="images/arch6.jpg" alt="">
-        <img src="images/arch7.jpg" alt="">
-        <img src="images/arch9.jpg" alt="">
-      </div>
-    </div>
-  </div>
-  <div id="bookingModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('bookingModal')">&times;</span>
-      <h2>Booking Form</h2>
-      <form class="booking-form" action="https://formsubmit.co/alinasirobaba8@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number" required>
-        <input type="email" name="email" placeholder="Email Address" required>
-        <select name="event_type" required>
-          <option value="">Select Event Type</option>
-          <option>Birthday</option>
-          <option>Baby Shower</option>
-          <option>Wedding</option>
-          <option>Gender Reveal</option>
-          <option>Corporate Event</option>
-          <option>Starter Package</option>
-          <option>Signature Package</option>
-          <option>Luxury Package</option>
-          <option>First Order Discount</option>
-          <option>Customized Cups</option>
-          <option>Customized T-Shirts</option>
-          <option>Stickers / Personalized Details</option>
-          <option>Customized Keychains</option>
-          <option>Other</option>
-        </select>
-        <input type="date" name="event_date" required>
-        <input type="text" name="location" placeholder="Event Location">
-        <input type="text" name="colors_theme" placeholder="Colors / Theme">
-        <textarea name="details" rows="5" placeholder="Tell me about your event, decor style, colors, and any customized details you would like." required></textarea>
-        <input type="hidden" name="_subject" value="New Booking Request from Website">
-        <input type="hidden" name="_captcha" value="false">
-        <button type="submit" class="contact-button">Send Booking Request</button>
-      </form>
-    </div>
-  </div>
-  <div id="contactModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('contactModal')">&times;</span>
-      <h2>Contact</h2>
-      <p><strong>Email:</strong>
-        <a class="contact-link" href="mailto:alinasirobaba8@gmail.com">alinasirobaba8@gmail.com</a>
-      </p>
-      <p><strong>Phone / Text:</strong>
-        <a class="contact-link" href="tel:+14389282152">+1 (438) 928-2152</a>
-      </p>
-      <p><strong>Instagram:</strong>
-        <a class="contact-link" href="https://www.instagram.com/alinas_party_arches_balloons_/" target="_blank">
-          @alinas_party_arches_balloons_
-        </a>
-      </p>
-      <p><strong>Location:</strong>
-        <a class="contact-link" href="https://maps.app.goo.gl/CghPowcKYj4NRH8b8" target="_blank">
-          View on Google Maps
-        </a>
-      </p>
-      <p>Based in Montreal, available for birthdays, baby showers, weddings, corporate events, custom cups, t-shirts, stickers, keychains, and personalized event details.</p>
-    </div>
-  </div>
-  <div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <button class="lightbox-arrow lightbox-prev">&#10094;</button>
-    <img id="lightbox-img" src="" alt="">
-    <button class="lightbox-arrow lightbox-next">&#10095;</button>
-  </div>
-  <div class="sticky-contact-bar">
-    <a href="tel:+14389282152">Call</a>
-    <a href="sms:+14389282152">Text</a>
-    <a href="mailto:alinasirobaba8@gmail.com">Email</a>
-    <a href="https://maps.app.goo.gl/CghPowcKYj4NRH8b8" target="_blank">Map</a>
-  </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><div><strong>Alina’s Party Studio</strong><br><small>Montreal event décor &amp; custom party details</small></div><div class="footer-links"><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#booking">Contact</a></div><small>© <span id="year"></span> Alina’s Party Studio</small></div></footer>
+
+  <div class="lightbox" role="dialog" aria-label="Gallery image preview" aria-hidden="true"><button aria-label="Close image">×</button><img src="" alt=""></div>
   <script>
-    function openModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.style.display = "flex";
-    }
-    function closeModal(id) {
-      const modal = document.getElementById(id);
-      if (modal) modal.style.display = "none";
-    }
-    window.addEventListener("click", function(event) {
-      if (event.target.classList.contains("modal")) {
-        event.target.style.display = "none";
-      }
-    });
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightbox-img");
-    const lightboxClose = document.querySelector(".lightbox-close");
-    const prevBtn = document.querySelector(".lightbox-prev");
-    const nextBtn = document.querySelector(".lightbox-next");
-    const galleryImages = Array.from(document.querySelectorAll(".all-gallery img"));
-    let currentIndex = 0;
-    function showImage(index) {
-      currentIndex = index;
-      lightboxImg.src = galleryImages[currentIndex].src;
-      lightbox.classList.add("active");
-    }
-    function closeLightbox() {
-      lightbox.classList.remove("active");
-      lightboxImg.src = "";
-    }
-    function showNextImage(event) {
-      event.stopPropagation();
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    }
-    function showPrevImage(event) {
-      event.stopPropagation();
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      lightboxImg.src = galleryImages[currentIndex].src;
-    }
-    galleryImages.forEach(function(img, index) {
-      img.addEventListener("click", function(event) {
-        event.stopPropagation();
-        showImage(index);
-      });
-    });
-    nextBtn.addEventListener("click", showNextImage);
-    prevBtn.addEventListener("click", showPrevImage);
-    lightboxClose.addEventListener("click", function(event) {
-      event.stopPropagation();
-      closeLightbox();
-    });
-    lightboxImg.addEventListener("click", function(event) {
-      event.stopPropagation();
-    });
-    lightbox.addEventListener("click", closeLightbox);
-    document.addEventListener("keydown", function(event) {
-      if (event.key === "Escape") {
-        document.querySelectorAll(".modal").forEach(function(modal) {
-          modal.style.display = "none";
-        });
-        closeLightbox();
-      }
-      if (lightbox.classList.contains("active") && event.key === "ArrowRight") {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex].src;
-      }
-      if (lightbox.classList.contains("active") && event.key === "ArrowLeft") {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        lightboxImg.src = galleryImages[currentIndex].src;
-      }
-    });
+    const menuButton=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
+    menuButton.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuButton.setAttribute('aria-expanded',open)});
+    nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menuButton.setAttribute('aria-expanded','false')}));
+    const filters=[...document.querySelectorAll('.filter')],items=[...document.querySelectorAll('.gallery-item')],empty=document.querySelector('.gallery-empty'),grid=document.querySelector('.gallery-grid');
+    filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));button.classList.add('active');const choice=button.dataset.filter;let visible=0;items.forEach(item=>{const show=choice==='all'||item.dataset.category===choice;item.hidden=!show;if(show)visible++});grid.style.display=visible?'grid':'none';empty.style.display=visible?'none':'block'}));
+    const lightbox=document.querySelector('.lightbox'),lightboxImg=lightbox.querySelector('img');
+    items.forEach(item=>item.addEventListener('click',()=>{const img=item.querySelector('img');lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false')}));
+    function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src=''}
+    lightbox.addEventListener('click',closeLightbox);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});document.getElementById('year').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
