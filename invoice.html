@@ -30,7 +30,6 @@
         <div class="field"><label for="eventLocation">Event location</label><input id="eventLocation" placeholder="Venue or city"></div>
         <div class="field full"><label for="description">Package and approved details</label><textarea id="description" placeholder="Example: Signature balloon package, custom colour palette, installation and personalized name sign"></textarea></div>
         <div class="field"><label for="total">Approved total price (CAD)</label><input id="total" type="number" min="0" step="0.01" value="450"></div>
-        <div class="field"><label for="balanceDue">Final balance due date</label><input id="balanceDue" type="date"></div>
       </div>
       <div class="actions"><button class="btn" type="button" onclick="window.print()">Print / Save as PDF</button><button class="btn secondary" type="button" id="clearButton">Clear client details</button></div>
     </section>
@@ -50,7 +49,7 @@
         <div class="total-row"><span>Approved event total</span><strong id="totalOut">$450.00</strong></div>
         <div class="total-row deposit"><span>Deposit due now (30%)</span><span id="depositOut">$135.00</span></div>
         <div class="total-row"><span>Remaining balance (70%)</span><strong id="remainingOut">$315.00</strong></div>
-        <div class="total-row"><span>Final balance due</span><strong data-out="balanceDue">—</strong></div>
+        <div class="total-row"><span>Final balance due</span><strong>Day of the event</strong></div>
       </div>
       <section class="payment">
         <h3>e‑Transfer payment instructions</h3>
@@ -58,7 +57,7 @@
         <p><strong>alinasirobaba8@gmail.com</strong></p>
         <p>Please include invoice <strong data-out="invoiceNumber">APS-001</strong> and the client name in the transfer message.</p>
       </section>
-      <p class="policy">The reservation deposit will be applied toward the approved event total and becomes non-refundable within 48 hours of the event. The event date is not reserved until the deposit has been received and confirmed. Any changes to the approved services may affect the remaining balance.</p>
+      <p class="policy">The reservation deposit will be applied toward the approved event total and becomes non-refundable within 48 hours of the event. The event date is not reserved until the deposit has been received and confirmed. The remaining 70% balance is due on the day of the event. Any changes to the approved services may affect the remaining balance.</p>
       <p class="thank-you">Thank you for choosing Alina’s Party Studio.</p>
     </article>
   </main>
@@ -73,7 +72,7 @@
     }
     fields.forEach(field=>field.addEventListener('input',update));
     document.getElementById('invoiceDate').value=new Date().toISOString().slice(0,10);
-    document.getElementById('clearButton').addEventListener('click',()=>{['clientName','clientEmail','eventDate','eventLocation','description','balanceDue'].forEach(id=>document.getElementById(id).value='');update()});
+    document.getElementById('clearButton').addEventListener('click',()=>{['clientName','clientEmail','eventDate','eventLocation','description'].forEach(id=>document.getElementById(id).value='');update()});
     update();
   </script>
 </body>
