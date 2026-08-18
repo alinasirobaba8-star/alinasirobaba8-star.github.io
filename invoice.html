@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Invoice Creator | Alina’s Party Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#39252f;--muted:#755d69;--rose:#b85f7c;--blush:#f8eaf1;--cream:#fffafc;--line:#ead8e1;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;background:#f4edf1;color:var(--ink);font-family:'DM Sans',sans-serif}.creator{max-width:980px;margin:28px auto;padding:24px}.controls,.invoice{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 45px rgba(83,43,62,.1)}.controls{padding:28px;margin-bottom:24px}.controls h1{margin:0 0 6px;font:700 2rem 'Playfair Display',serif}.controls>p{margin:0 0 22px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:.82rem;font-weight:700}.field input,.field textarea{width:100%;padding:12px;border:1px solid #dcc8d2;border-radius:10px;font:inherit}.field textarea{min-height:92px;resize:vertical}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{border:0;border-radius:999px;padding:12px 20px;background:var(--rose);color:#fff;font-weight:700;cursor:pointer}.btn.secondary{background:var(--ink)}
+    .invoice{padding:48px}.invoice-head{display:flex;justify-content:space-between;gap:30px;padding-bottom:28px;border-bottom:2px solid var(--ink)}.brand h2{margin:0;color:var(--rose);font:700 2rem 'Playfair Display',serif}.brand p,.invoice-meta p{margin:4px 0;color:var(--muted)}.invoice-meta{text-align:right}.invoice-meta strong{display:block;font-size:1.8rem}.parties{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:30px 0}.label{margin-bottom:6px;color:var(--rose);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.parties p{margin:3px 0}.description{padding:22px;border-radius:14px;background:var(--cream);white-space:pre-wrap}.totals{width:min(420px,100%);margin:28px 0 28px auto}.total-row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid var(--line)}.total-row.deposit{margin-top:8px;padding:16px;color:var(--rose);border:2px solid var(--rose);border-radius:12px;font-size:1.2rem;font-weight:700}.payment{padding:22px;border-radius:15px;background:var(--blush)}.payment h3{margin:0 0 8px;font:700 1.25rem 'Playfair Display',serif}.payment p{margin:5px 0}.policy{margin-top:24px;color:var(--muted);font-size:.85rem}.thank-you{text-align:center;margin:32px 0 0;font:600 1.25rem 'Playfair Display',serif}
+    @media(max-width:650px){.creator{padding:12px}.form-grid,.parties{grid-template-columns:1fr}.invoice{padding:25px}.invoice-head{flex-direction:column}.invoice-meta{text-align:left}}
+    @media print{body{background:#fff}.creator{max-width:none;margin:0;padding:0}.controls{display:none}.invoice{border:0;border-radius:0;box-shadow:none;padding:12mm}.payment{print-color-adjust:exact;-webkit-print-color-adjust:exact}.total-row.deposit{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+  </style>
+</head>
+<body>
+  <main class="creator">
+    <section class="controls" aria-label="Invoice details">
+      <h1>Create a client invoice</h1>
+      <p>Enter the approved quote details. The 30% reservation deposit is calculated automatically.</p>
+      <div class="form-grid">
+        <div class="field"><label for="invoiceNumber">Invoice number</label><input id="invoiceNumber" value="APS-001"></div>
+        <div class="field"><label for="invoiceDate">Invoice date</label><input id="invoiceDate" type="date"></div>
+        <div class="field"><label for="clientName">Client name</label><input id="clientName" placeholder="Client’s full name"></div>
+        <div class="field"><label for="clientEmail">Client email</label><input id="clientEmail" type="email" placeholder="client@email.com"></div>
+        <div class="field"><label for="eventDate">Event date</label><input id="eventDate" type="date"></div>
+        <div class="field"><label for="eventLocation">Event location</label><input id="eventLocation" placeholder="Venue or city"></div>
+        <div class="field full"><label for="description">Package and approved details</label><textarea id="description" placeholder="Example: Signature balloon package, custom colour palette, installation and personalized name sign"></textarea></div>
+        <div class="field"><label for="total">Approved total price (CAD)</label><input id="total" type="number" min="0" step="0.01" value="450"></div>
+        <div class="field"><label for="balanceDue">Final balance due date</label><input id="balanceDue" type="date"></div>
+      </div>
+      <div class="actions"><button class="btn" type="button" onclick="window.print()">Print / Save as PDF</button><button class="btn secondary" type="button" id="clearButton">Clear client details</button></div>
+    </section>
+
+    <article class="invoice" id="invoice">
+      <header class="invoice-head">
+        <div class="brand"><h2>Alina’s Party Studio</h2><p>Montreal event décor &amp; custom party details</p><p>+1 (438) 928-2152</p><p>alinasirobaba8@gmail.com</p></div>
+        <div class="invoice-meta"><strong>INVOICE</strong><p>No. <span data-out="invoiceNumber">APS-001</span></p><p>Issued: <span data-out="invoiceDate">—</span></p></div>
+      </header>
+      <div class="parties">
+        <div><div class="label">Prepared for</div><p><strong data-out="clientName">Client name</strong></p><p data-out="clientEmail">Client email</p></div>
+        <div><div class="label">Event details</div><p>Event date: <strong data-out="eventDate">—</strong></p><p>Location: <span data-out="eventLocation">—</span></p></div>
+      </div>
+      <div class="label">Approved package &amp; services</div>
+      <div class="description" data-out="description">Package and service details will appear here.</div>
+      <div class="totals">
+        <div class="total-row"><span>Approved event total</span><strong id="totalOut">$450.00</strong></div>
+        <div class="total-row deposit"><span>Deposit due now (30%)</span><span id="depositOut">$135.00</span></div>
+        <div class="total-row"><span>Remaining balance (70%)</span><strong id="remainingOut">$315.00</strong></div>
+        <div class="total-row"><span>Final balance due</span><strong data-out="balanceDue">—</strong></div>
+      </div>
+      <section class="payment">
+        <h3>e‑Transfer payment instructions</h3>
+        <p>Send the 30% reservation deposit to:</p>
+        <p><strong>alinasirobaba8@gmail.com</strong></p>
+        <p>Please include invoice <strong data-out="invoiceNumber">APS-001</strong> and the client name in the transfer message.</p>
+      </section>
+      <p class="policy">The reservation deposit is non-refundable and will be applied toward the approved event total. The event date is not reserved until the deposit has been received and confirmed. Any changes to the approved services may affect the remaining balance.</p>
+      <p class="thank-you">Thank you for choosing Alina’s Party Studio.</p>
+    </article>
+  </main>
+  <script>
+    const fields=[...document.querySelectorAll('.controls input,.controls textarea')];
+    const money=new Intl.NumberFormat('en-CA',{style:'currency',currency:'CAD'});
+    const dateText=value=>value?new Date(value+'T12:00:00').toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'}):'—';
+    function update(){
+      fields.forEach(field=>{document.querySelectorAll(`[data-out="${field.id}"]`).forEach(out=>{let value=field.value.trim();if(field.type==='date')value=dateText(value);out.textContent=value||((field.id==='clientName')?'Client name':field.id==='clientEmail'?'Client email':field.id==='description'?'Package and service details will appear here.':'—')})});
+      const total=Math.max(0,Number(document.getElementById('total').value)||0),deposit=total*.3;
+      document.getElementById('totalOut').textContent=money.format(total);document.getElementById('depositOut').textContent=money.format(deposit);document.getElementById('remainingOut').textContent=money.format(total-deposit);
+    }
+    fields.forEach(field=>field.addEventListener('input',update));
+    document.getElementById('invoiceDate').value=new Date().toISOString().slice(0,10);
+    document.getElementById('clearButton').addEventListener('click',()=>{['clientName','clientEmail','eventDate','eventLocation','description','balanceDue'].forEach(id=>document.getElementById(id).value='');update()});
+    update();
+  </script>
+</body>
+</html>
