@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://alinasirobaba8-star.github.io/alinasarchesandballoons.ca/sitemap.xml
+Sitemap: https://alinasirobaba8-star.github.io/sitemap.xml
