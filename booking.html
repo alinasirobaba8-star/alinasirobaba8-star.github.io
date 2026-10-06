@@ -38,7 +38,7 @@
           <div class="field"><label for="budget">Estimated budget</label><select id="budget" name="budget"><option value="">Choose a range</option><option>Under $250</option><option>$250–$449</option><option>$450–$749</option><option>$750–$1,499</option><option>$1,500+</option><option>Not sure yet</option></select></div>
           <div class="field"><label for="contact-method">Preferred contact</label><select id="contact-method" name="preferred_contact"><option>Email</option><option>Text message</option><option>Phone call</option><option>Instagram</option></select></div>
           <div class="field full"><label for="details">Theme, colours and important details</label><textarea id="details" name="details" placeholder="Tell us what you are celebrating and what you have in mind." required></textarea></div>
-          <input name="_subject" type="hidden" value="New Alina’s Party Studio booking request"><input name="_captcha" type="hidden" value="false"><input name="_next" type="hidden" value="https://alinaspartystudio.com/thank-you.html"><input autocomplete="off" name="_honey" style="display:none" tabindex="-1">
+          <input name="_subject" type="hidden" value="New Alina’s Party Studio booking request"><input name="_captcha" type="hidden" value="true"><input name="_template" type="hidden" value="table"><input name="_next" type="hidden" value="https://alinaspartystudio.com/thank-you.html"><input autocomplete="off" name="_honey" style="display:none" tabindex="-1">
           <div class="field full"><label class="policy"><input name="reservation_policy_acknowledged" type="checkbox" value="Yes" required><span>I understand that this request does not reserve my date. My booking is confirmed after availability is approved and the 30% deposit is paid.</span></label></div>
           <div class="field full"><button class="btn" type="submit">Request availability &amp; quote</button><p class="fine">No payment is requested on this page.</p></div>
         </div>
@@ -47,5 +47,5 @@
   </main>
   <script>const requested=new URLSearchParams(location.search).get('service');const service=document.getElementById('service');if([...service.options].some(option=>option.value===requested))service.value=requested;</script>
   <script src="analytics-events.js"></script>
-</body>
+<script src="/form-notifications.js"></script></body>
 </html>
