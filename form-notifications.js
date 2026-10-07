@@ -5,6 +5,8 @@
   // A separate subject keeps unrelated customers out of one Gmail conversation.
   // Keep native POST submission so every enabled, named field is sent.
   form.addEventListener('submit', () => {
+    // The thank-you page only counts an inquiry after this form has submitted.
+    try { sessionStorage.setItem('party_studio_lead_pending', String(Date.now())); } catch (_) {}
     const value = name => String(form.elements.namedItem(name)?.value || '')
       .replace(/[\r\n]+/g, ' ').trim();
     const subject = form.elements.namedItem('_subject');
