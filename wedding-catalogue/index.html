@@ -156,21 +156,6 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 document.querySelectorAll('.preview-zoom').forEach(img=>{img.tabIndex=0;img.setAttribute('role','button');img.setAttribute('aria-label','Enlarge '+img.alt);const open=()=>{const m=document.querySelector('.zoom-modal');if(!m)return;const picture=m.querySelector('img');if(picture){picture.src=img.src;picture.alt=img.alt;picture.style.display='block';}const svg=m.querySelector('svg');if(svg)svg.style.display='none';const caption=m.querySelector('.zoom-label');if(caption)caption.textContent=img.alt;m.classList.add('open')};img.addEventListener('click',open);img.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
 </script><script>document.querySelectorAll('.copy-site').forEach(button=>button.addEventListener('click',async()=>{const url=button.dataset.url;try{await navigator.clipboard.writeText(url);button.textContent='Copied ✓'}catch(e){const input=document.createElement('textarea');input.value=url;input.style.position='fixed';input.style.left='-9999px';document.body.append(input);input.select();let ok=false;try{ok=document.execCommand('copy')}catch(err){}input.remove();if(ok){button.textContent='Copied ✓'}else{window.prompt('Copy this website address:',url)}}setTimeout(()=>button.textContent='Copy website link',2500)}));</script><script>
-/* Venue and rental website links: single-click or double-click, same tab. */
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('a[href^="https://"]').forEach(function (link) {
-    let pending;
-    link.addEventListener('click', function (event) {
-      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      clearTimeout(pending);
-      pending = setTimeout(function () { window.location.assign(link.href); }, 320);
-    });
-    link.addEventListener('dblclick', function (event) {
-      event.preventDefault();
-      clearTimeout(pending);
-      window.location.assign(link.href);
-    });
-  });
-});
+/* Allow standard browser navigation without popup windows. */
+document.querySelectorAll('a[href^="https://"]').forEach(link=>{link.removeAttribute('target');link.setAttribute('target','_self');});
 </script></body></html>
